@@ -1,0 +1,189 @@
+// ============================================
+// Contact Block (BEM)
+// ============================================
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.contact {
+    @include section-padding;
+    background: $color-bg-secondary;
+
+    &__inner {
+        @include container;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $spacing-3xl;
+        align-items: start;
+
+        @include respond-to(md) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__info {
+        @include flex-column;
+        gap: $spacing-xl;
+    }
+
+    &__label {
+        color: $color-accent;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    &__title {
+        @include section-title;
+    }
+
+    &__text {
+        font-size: $font-size-base;
+        color: $color-text-secondary;
+        line-height: $line-height-relaxed;
+    }
+
+    &__details {
+        @include flex-column;
+        gap: $spacing-lg;
+    }
+
+    &__detail-item {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+    }
+
+    &__detail-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: $radius-lg;
+        background: $color-accent-light;
+        @include flex-center;
+        font-size: $font-size-lg;
+        color: $color-accent;
+        flex-shrink: 0;
+    }
+
+    &__detail-content {
+        @include flex-column;
+        gap: $spacing-xs;
+    }
+
+    &__detail-label {
+        font-size: $font-size-xs;
+        color: $color-text-muted;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    &__detail-value {
+        font-size: $font-size-base;
+        color: $color-text-primary;
+        font-weight: $font-weight-medium;
+        text-decoration: none;
+
+        &:hover {
+            color: $color-accent;
+        }
+    }
+
+    &__form {
+        @include card;
+        padding: $spacing-2xl;
+    }
+
+    &__form-title {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-semibold;
+        color: $color-text-primary;
+        margin-bottom: $spacing-xl;
+    }
+
+    &__form-group {
+        margin-bottom: $spacing-lg;
+    }
+
+    &__form-label {
+        display: block;
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+        font-weight: $font-weight-medium;
+        margin-bottom: $spacing-sm;
+    }
+
+    &__form-input,
+    &__form-textarea {
+        width: 100%;
+        padding: $spacing-md;
+        background: $color-bg-input;
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+        color: $color-text-primary;
+        font-family: $font-primary;
+        font-size: $font-size-base;
+        transition: border-color $transition-base;
+
+        &::placeholder {
+            color: $color-text-muted;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $color-accent;
+            box-shadow: 0 0 0 3px $color-accent-light;
+        }
+    }
+
+    &__form-textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    &__form-checkbox {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        margin-bottom: $spacing-lg;
+        cursor: pointer;
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: $color-accent;
+            cursor: pointer;
+        }
+
+        label {
+            font-size: $font-size-sm;
+            color: $color-text-secondary;
+            cursor: pointer;
+        }
+    }
+
+    &__form-actions {
+        display: flex;
+        gap: $spacing-md;
+
+        @include respond-to(sm) {
+            flex-direction: column;
+        }
+    }
+
+    &__form-submit {
+        @include button-primary;
+        flex: 1;
+        padding: $spacing-md;
+    }
+
+    &__form-reset {
+        @include button-secondary;
+        flex: 0.5;
+        padding: $spacing-md;
+
+        @include respond-to(sm) {
+            flex: 1;
+        }
+    }
+}

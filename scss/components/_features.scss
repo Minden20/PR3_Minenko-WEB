@@ -1,0 +1,90 @@
+// ============================================
+// Features Block (BEM)
+// ============================================
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.features {
+    @include section-padding;
+    background: $color-bg-primary;
+
+    &__inner {
+        @include container;
+    }
+
+    &__header {
+        text-align: center;
+        margin-bottom: $spacing-3xl;
+    }
+
+    &__title {
+        @include section-title;
+    }
+
+    &__subtitle {
+        @include section-subtitle;
+        margin: 0 auto;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $spacing-xl;
+
+        @include respond-to(lg) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include respond-to(sm) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__card {
+        @include card;
+        padding: $spacing-xl;
+        @include flex-column;
+        gap: $spacing-md;
+    }
+
+    &__card-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: $radius-lg;
+        background: $color-accent-light;
+        @include flex-center;
+        font-size: $font-size-xl;
+        color: $color-accent;
+        flex-shrink: 0;
+    }
+
+    &__card-title {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+        color: $color-text-primary;
+    }
+
+    &__card-text {
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+        line-height: $line-height-relaxed;
+        margin-bottom: 0;
+    }
+
+    &__card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-xs;
+        color: $color-accent;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        text-decoration: none;
+        margin-top: auto;
+        transition: gap $transition-base;
+
+        &:hover {
+            gap: $spacing-sm;
+        }
+    }
+}

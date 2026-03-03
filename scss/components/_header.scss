@@ -1,0 +1,110 @@
+// ============================================
+// Header Block (BEM)
+// ============================================
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: $z-header;
+    padding: $spacing-md 0;
+    @include glass-effect;
+    transition: background $transition-base;
+
+    &__inner {
+        @include container;
+        @include flex-between;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        text-decoration: none;
+        color: $color-text-primary;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-bold;
+        letter-spacing: -0.5px;
+    }
+
+    &__logo-icon {
+        font-size: $font-size-xl;
+    }
+
+    &__nav {
+        @include respond-to(md) {
+            display: none;
+        }
+    }
+
+    &__nav-list {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xl;
+        list-style: none;
+    }
+
+    &__nav-link {
+        color: $color-text-secondary;
+        text-decoration: none;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        transition: color $transition-base;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: $color-accent-gradient;
+            transition: width $transition-base;
+        }
+
+        &:hover {
+            color: $color-text-primary;
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    &__cta {
+        @include button-primary;
+        padding: $spacing-sm $spacing-lg;
+        font-size: $font-size-sm;
+
+        @include respond-to(md) {
+            display: none;
+        }
+    }
+
+    &__burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: $spacing-sm;
+
+        @include respond-to(md) {
+            display: flex;
+        }
+
+        span {
+            width: 24px;
+            height: 2px;
+            background: $color-text-primary;
+            border-radius: 2px;
+            transition: all $transition-base;
+        }
+    }
+}

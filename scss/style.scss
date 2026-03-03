@@ -1,0 +1,19 @@
+// ============================================
+// Main Entry Point — Imports all partials
+// ============================================
+
+// Foundation
+@use 'variables';
+@use 'mixins';
+@use 'base';
+
+// Components (BEM blocks)
+@use 'components/header';
+@use 'components/hero';
+@use 'components/features';
+@use 'components/stats';
+@use 'components/about';
+@use 'components/team';
+@use 'components/gallery';
+@use 'components/contact';
+@use 'components/footer';

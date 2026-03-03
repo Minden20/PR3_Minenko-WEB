@@ -1,0 +1,174 @@
+// ============================================
+// Hero Block (BEM)
+// ============================================
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    @include flex-center;
+    overflow: hidden;
+    padding-top: 80px;
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                    rgba(10, 10, 15, 0.7) 0%,
+                    rgba(10, 10, 15, 0.5) 40%,
+                    rgba(10, 10, 15, 0.85) 100%);
+        }
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        @include container;
+        text-align: center;
+        @include flex-column;
+        align-items: center;
+        gap: $spacing-lg;
+        max-width: 800px;
+    }
+
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-sm;
+        padding: $spacing-xs $spacing-md;
+        background: $color-accent-light;
+        border: 1px solid rgba(67, 97, 238, 0.3);
+        border-radius: $radius-2xl;
+        font-size: $font-size-sm;
+        color: $color-accent;
+        font-weight: $font-weight-medium;
+    }
+
+    &__title {
+        font-size: $font-size-5xl;
+        font-weight: $font-weight-extrabold;
+        line-height: $line-height-tight;
+        color: $color-text-primary;
+        letter-spacing: -1px;
+
+        @include respond-to(md) {
+            font-size: $font-size-3xl;
+        }
+
+        @include respond-to(sm) {
+            font-size: $font-size-2xl;
+        }
+    }
+
+    &__title-accent {
+        @include gradient-text;
+    }
+
+    &__subtitle {
+        font-size: $font-size-md;
+        color: $color-text-secondary;
+        line-height: $line-height-relaxed;
+        max-width: 600px;
+
+        @include respond-to(md) {
+            font-size: $font-size-base;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: $spacing-md;
+        margin-top: $spacing-md;
+
+        @include respond-to(sm) {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+
+    &__btn-primary {
+        @include button-primary;
+        padding: $spacing-md $spacing-2xl;
+        font-size: $font-size-base;
+    }
+
+    &__btn-secondary {
+        @include button-secondary;
+        padding: $spacing-md $spacing-2xl;
+        font-size: $font-size-base;
+    }
+
+    &__scroll-hint {
+        position: absolute;
+        bottom: $spacing-xl;
+        left: 50%;
+        transform: translateX(-50%);
+        @include flex-column;
+        align-items: center;
+        gap: $spacing-sm;
+        color: $color-text-muted;
+        font-size: $font-size-xs;
+        animation: bounce 2s infinite;
+    }
+
+    &__scroll-icon {
+        width: 24px;
+        height: 38px;
+        border: 2px solid $color-text-muted;
+        border-radius: 12px;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: $color-text-muted;
+            border-radius: 2px;
+            animation: scroll-dot 2s infinite;
+        }
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(8px);
+    }
+}
+
+@keyframes scroll-dot {
+
+    0%,
+    100% {
+        opacity: 0;
+        top: 6px;
+    }
+
+    50% {
+        opacity: 1;
+        top: 18px;
+    }
+}
