@@ -12,6 +12,17 @@
     overflow: hidden;
     padding-top: 80px;
 
+    @include respond-to(md) {
+        min-height: 85vh;
+        padding-top: 70px;
+    }
+
+    @include respond-to(sm) {
+        min-height: 100vh;
+        min-height: 100svh;
+        padding-top: 60px;
+    }
+
     &__bg {
         position: absolute;
         inset: 0;
@@ -43,6 +54,17 @@
         align-items: center;
         gap: $spacing-lg;
         max-width: 800px;
+
+        @include respond-to(md) {
+            gap: $spacing-md;
+            max-width: 90%;
+        }
+
+        @include respond-to(sm) {
+            gap: $spacing-md;
+            padding-left: $spacing-md;
+            padding-right: $spacing-md;
+        }
     }
 
     &__badge {
@@ -56,6 +78,11 @@
         font-size: $font-size-sm;
         color: $color-accent;
         font-weight: $font-weight-medium;
+
+        @include respond-to(sm) {
+            font-size: $font-size-xs;
+            padding: $spacing-xs $spacing-sm;
+        }
     }
 
     &__title {
@@ -71,6 +98,7 @@
 
         @include respond-to(sm) {
             font-size: $font-size-2xl;
+            letter-spacing: -0.5px;
         }
     }
 
@@ -86,6 +114,11 @@
 
         @include respond-to(md) {
             font-size: $font-size-base;
+            max-width: 100%;
+        }
+
+        @include respond-to(sm) {
+            font-size: $font-size-sm;
         }
     }
 
@@ -104,12 +137,22 @@
         @include button-primary;
         padding: $spacing-md $spacing-2xl;
         font-size: $font-size-base;
+
+        @include respond-to(sm) {
+            width: 100%;
+            padding: $spacing-md $spacing-lg;
+        }
     }
 
     &__btn-secondary {
         @include button-secondary;
         padding: $spacing-md $spacing-2xl;
         font-size: $font-size-base;
+
+        @include respond-to(sm) {
+            width: 100%;
+            padding: $spacing-md $spacing-lg;
+        }
     }
 
     &__scroll-hint {
@@ -123,6 +166,10 @@
         color: $color-text-muted;
         font-size: $font-size-xs;
         animation: bounce 2s infinite;
+
+        @include respond-to(sm) {
+            display: none;
+        }
     }
 
     &__scroll-icon {

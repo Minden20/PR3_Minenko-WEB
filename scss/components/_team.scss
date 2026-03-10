@@ -16,6 +16,14 @@
     &__header {
         text-align: center;
         margin-bottom: $spacing-3xl;
+
+        @include respond-to(md) {
+            margin-bottom: $spacing-2xl;
+        }
+
+        @include respond-to(sm) {
+            margin-bottom: $spacing-xl;
+        }
     }
 
     &__title {
@@ -36,8 +44,14 @@
             grid-template-columns: repeat(2, 1fr);
         }
 
+        @include respond-to(md) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: $spacing-lg;
+        }
+
         @include respond-to(sm) {
             grid-template-columns: 1fr;
+            gap: $spacing-md;
         }
     }
 
@@ -48,6 +62,13 @@
         @include flex-column;
         align-items: center;
         gap: $spacing-md;
+
+        @include respond-to(sm) {
+            padding: $spacing-lg;
+            flex-direction: row;
+            text-align: left;
+            align-items: flex-start;
+        }
     }
 
     &__avatar {
@@ -60,6 +81,12 @@
 
         .team__card:hover & {
             border-color: $color-accent;
+        }
+
+        @include respond-to(sm) {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
         }
     }
 
@@ -77,6 +104,13 @@
 
         .team__card:hover & {
             border-color: $color-accent;
+        }
+
+        @include respond-to(sm) {
+            width: 60px;
+            height: 60px;
+            font-size: $font-size-lg;
+            flex-shrink: 0;
         }
     }
 

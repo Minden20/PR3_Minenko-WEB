@@ -16,6 +16,14 @@
     &__header {
         text-align: center;
         margin-bottom: $spacing-3xl;
+
+        @include respond-to(md) {
+            margin-bottom: $spacing-2xl;
+        }
+
+        @include respond-to(sm) {
+            margin-bottom: $spacing-xl;
+        }
     }
 
     &__title {
@@ -35,10 +43,12 @@
 
         @include respond-to(md) {
             grid-template-columns: repeat(2, 1fr);
+            gap: $spacing-md;
         }
 
         @include respond-to(sm) {
             grid-template-columns: 1fr;
+            gap: $spacing-md;
         }
     }
 
@@ -54,6 +64,12 @@
             grid-column: span 2;
             grid-row: span 2;
             aspect-ratio: auto;
+
+            @include respond-to(md) {
+                grid-column: span 2;
+                grid-row: span 1;
+                aspect-ratio: 16 / 10;
+            }
 
             @include respond-to(sm) {
                 grid-column: span 1;
@@ -89,6 +105,11 @@
         @include flex-column;
         justify-content: flex-end;
         padding: $spacing-lg;
+
+        @include respond-to(sm) {
+            opacity: 1;
+            padding: $spacing-md;
+        }
     }
 
     &__caption {

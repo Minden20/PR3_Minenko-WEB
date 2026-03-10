@@ -34,8 +34,14 @@
             grid-template-columns: repeat(2, 1fr);
         }
 
+        @include respond-to(md) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: $spacing-lg;
+        }
+
         @include respond-to(sm) {
             grid-template-columns: 1fr;
+            gap: $spacing-md;
         }
     }
 
@@ -43,6 +49,10 @@
         text-align: center;
         padding: $spacing-xl;
         position: relative;
+
+        @include respond-to(sm) {
+            padding: $spacing-lg $spacing-md;
+        }
     }
 
     &__number {
@@ -55,6 +65,10 @@
         @include respond-to(md) {
             font-size: $font-size-3xl;
         }
+
+        @include respond-to(sm) {
+            font-size: $font-size-2xl;
+        }
     }
 
     &__label {
@@ -63,6 +77,10 @@
         font-weight: $font-weight-medium;
         text-transform: uppercase;
         letter-spacing: 1px;
+
+        @include respond-to(sm) {
+            font-size: $font-size-xs;
+        }
     }
 
     &__divider {

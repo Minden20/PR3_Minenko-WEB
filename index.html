@@ -43,6 +43,7 @@
                         <a class="header__nav-link" href="#contact" title="Зв'язатися з нами">Контакти</a>
                     </li>
                 </ul>
+                <a href="#contact" class="header__cta--mobile">Зв'язатися</a>
             </nav>
             <a href="#contact" class="header__cta">Зв'язатися</a>
             <button class="header__burger" aria-label="Меню">
@@ -50,6 +51,7 @@
                 <span></span>
                 <span></span>
             </button>
+            <div class="header__overlay"></div>
         </div>
     </header>
 
@@ -412,6 +414,35 @@
             </div>
         </div>
     </footer>
+
+<script>
+(function() {
+    const burger = document.querySelector('.header__burger');
+    const nav = document.querySelector('.header__nav');
+    const overlay = document.querySelector('.header__overlay');
+    const navLinks = document.querySelectorAll('.header__nav-link, .header__cta--mobile');
+
+    function toggleMenu() {
+        burger.classList.toggle('header__burger--active');
+        nav.classList.toggle('header__nav--active');
+        overlay.classList.toggle('header__overlay--active');
+        document.body.style.overflow = nav.classList.contains('header__nav--active') ? 'hidden' : '';
+    }
+
+    function closeMenu() {
+        burger.classList.remove('header__burger--active');
+        nav.classList.remove('header__nav--active');
+        overlay.classList.remove('header__overlay--active');
+        document.body.style.overflow = '';
+    }
+
+    burger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', closeMenu);
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+    });
+})();
+</script>
 
 </body>
 </html>

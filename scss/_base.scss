@@ -17,6 +17,14 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+
+    @include respond-to(md) {
+        font-size: 15px;
+    }
+
+    @include respond-to(sm) {
+        font-size: 14px;
+    }
 }
 
 body {

@@ -10,6 +10,10 @@
     background: $color-bg-primary;
     border-top: 1px solid $color-border;
 
+    @include respond-to(md) {
+        padding: $spacing-2xl 0 $spacing-lg;
+    }
+
     &__inner {
         @include container;
     }
@@ -24,14 +28,26 @@
             grid-template-columns: 1fr 1fr;
         }
 
+        @include respond-to(md) {
+            grid-template-columns: 1fr 1fr;
+            gap: $spacing-xl;
+            margin-bottom: $spacing-2xl;
+        }
+
         @include respond-to(sm) {
             grid-template-columns: 1fr;
+            gap: $spacing-xl;
+            text-align: center;
         }
     }
 
     &__brand {
         @include flex-column;
         gap: $spacing-md;
+
+        @include respond-to(sm) {
+            align-items: center;
+        }
     }
 
     &__logo {
@@ -42,6 +58,10 @@
         color: $color-text-primary;
         font-size: $font-size-lg;
         font-weight: $font-weight-bold;
+
+        @include respond-to(sm) {
+            justify-content: center;
+        }
     }
 
     &__logo-icon {
@@ -54,11 +74,19 @@
         line-height: $line-height-relaxed;
         max-width: 300px;
         margin-bottom: 0;
+
+        @include respond-to(sm) {
+            max-width: 100%;
+        }
     }
 
     &__column {
         @include flex-column;
         gap: $spacing-md;
+
+        @include respond-to(sm) {
+            align-items: center;
+        }
     }
 
     &__column-title {
@@ -72,6 +100,10 @@
     &__list {
         @include flex-column;
         gap: $spacing-sm;
+
+        @include respond-to(sm) {
+            align-items: center;
+        }
     }
 
     &__link {

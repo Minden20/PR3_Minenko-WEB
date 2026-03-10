@@ -47,6 +47,15 @@
         &:hover {
             transform: scale(1.03);
         }
+
+        @include respond-to(md) {
+            height: 300px;
+        }
+
+        @include respond-to(sm) {
+            height: auto;
+            max-height: 50vh;
+        }
     }
 
     &__image-badge {
@@ -59,11 +68,21 @@
         font-size: $font-size-sm;
         color: $color-text-primary;
         font-weight: $font-weight-medium;
+
+        @include respond-to(sm) {
+            bottom: $spacing-md;
+            left: $spacing-md;
+            font-size: $font-size-xs;
+        }
     }
 
     &__content {
         @include flex-column;
         gap: $spacing-lg;
+
+        @include respond-to(sm) {
+            gap: $spacing-md;
+        }
     }
 
     &__label {
@@ -124,5 +143,10 @@
         @include button-primary;
         align-self: flex-start;
         padding: $spacing-md $spacing-xl;
+
+        @include respond-to(sm) {
+            align-self: stretch;
+            text-align: center;
+        }
     }
 }

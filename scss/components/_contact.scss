@@ -18,12 +18,17 @@
 
         @include respond-to(md) {
             grid-template-columns: 1fr;
+            gap: $spacing-xl;
         }
     }
 
     &__info {
         @include flex-column;
         gap: $spacing-xl;
+
+        @include respond-to(sm) {
+            gap: $spacing-lg;
+        }
     }
 
     &__label {
@@ -47,6 +52,10 @@
     &__details {
         @include flex-column;
         gap: $spacing-lg;
+
+        @include respond-to(sm) {
+            gap: $spacing-md;
+        }
     }
 
     &__detail-item {
@@ -64,6 +73,12 @@
         font-size: $font-size-lg;
         color: $color-accent;
         flex-shrink: 0;
+
+        @include respond-to(sm) {
+            width: 40px;
+            height: 40px;
+            font-size: $font-size-base;
+        }
     }
 
     &__detail-content {
@@ -87,11 +102,23 @@
         &:hover {
             color: $color-accent;
         }
+
+        @include respond-to(sm) {
+            font-size: $font-size-sm;
+        }
     }
 
     &__form {
         @include card;
         padding: $spacing-2xl;
+
+        @include respond-to(md) {
+            padding: $spacing-xl;
+        }
+
+        @include respond-to(sm) {
+            padding: $spacing-lg;
+        }
     }
 
     &__form-title {
@@ -99,10 +126,19 @@
         font-weight: $font-weight-semibold;
         color: $color-text-primary;
         margin-bottom: $spacing-xl;
+
+        @include respond-to(sm) {
+            font-size: $font-size-lg;
+            margin-bottom: $spacing-lg;
+        }
     }
 
     &__form-group {
         margin-bottom: $spacing-lg;
+
+        @include respond-to(sm) {
+            margin-bottom: $spacing-md;
+        }
     }
 
     &__form-label {
@@ -134,11 +170,19 @@
             border-color: $color-accent;
             box-shadow: 0 0 0 3px $color-accent-light;
         }
+
+        @include respond-to(sm) {
+            padding: $spacing-sm $spacing-md;
+        }
     }
 
     &__form-textarea {
         min-height: 120px;
         resize: vertical;
+
+        @include respond-to(sm) {
+            min-height: 100px;
+        }
     }
 
     &__form-checkbox {

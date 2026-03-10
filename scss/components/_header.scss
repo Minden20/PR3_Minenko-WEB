@@ -37,7 +37,24 @@
 
     &__nav {
         @include respond-to(md) {
-            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 75%;
+            max-width: 320px;
+            height: 100vh;
+            background: $color-bg-secondary;
+            border-left: 1px solid $color-border;
+            z-index: $z-header + 10;
+            @include flex-column;
+            padding: $spacing-5xl $spacing-xl $spacing-xl;
+            transition: right $transition-base;
+        }
+
+        &--active {
+            @include respond-to(md) {
+                right: 0;
+            }
         }
     }
 
@@ -46,6 +63,20 @@
         align-items: center;
         gap: $spacing-xl;
         list-style: none;
+
+        @include respond-to(md) {
+            @include flex-column;
+            align-items: flex-start;
+            gap: 0;
+            width: 100%;
+        }
+    }
+
+    &__nav-item {
+        @include respond-to(md) {
+            width: 100%;
+            border-bottom: 1px solid $color-border-light;
+        }
     }
 
     &__nav-link {
@@ -74,6 +105,16 @@
                 width: 100%;
             }
         }
+
+        @include respond-to(md) {
+            display: block;
+            padding: $spacing-md 0;
+            font-size: $font-size-base;
+
+            &::after {
+                display: none;
+            }
+        }
     }
 
     &__cta {
@@ -86,6 +127,20 @@
         }
     }
 
+    &__cta--mobile {
+        @include button-primary;
+        display: none;
+        width: 100%;
+        padding: $spacing-md;
+        margin-top: $spacing-lg;
+        font-size: $font-size-base;
+        text-align: center;
+
+        @include respond-to(md) {
+            display: inline-flex;
+        }
+    }
+
     &__burger {
         display: none;
         flex-direction: column;
@@ -94,6 +149,7 @@
         background: none;
         border: none;
         padding: $spacing-sm;
+        z-index: $z-header + 20;
 
         @include respond-to(md) {
             display: flex;
@@ -105,6 +161,34 @@
             background: $color-text-primary;
             border-radius: 2px;
             transition: all $transition-base;
+        }
+
+        &--active {
+            span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+            }
+
+            span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+    }
+
+    &__overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: $z-header + 5;
+
+        &--active {
+            @include respond-to(md) {
+                display: block;
+            }
         }
     }
 }
