@@ -1,10 +1,7 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // ==========================================
-    // 1. Mobile Burger Menu
-    // ==========================================
+
     const burger = document.querySelector('.header__burger');
     const nav = document.querySelector('.header__nav');
     const overlay = document.querySelector('.header__overlay');
@@ -31,30 +28,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // ==========================================
-    // 2. Dark/Light Theme Toggle
-    // ==========================================
+
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = themeToggleBtn?.querySelector('.theme-toggle__icon');
-    
-    // Check saved theme or system preference
+
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    // Default to dark theme logic in HTML, but we use [data-theme='dark'] explicitly now
+
+
     let currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-    
-    // Apply initial theme
+
+
     const applyTheme = (theme) => {
         if (theme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
-            if (themeIcon) themeIcon.textContent = '🌞'; // Show Sun for dark theme to switch to light
+            if (themeIcon) themeIcon.textContent = '🌞';
         } else {
             document.documentElement.removeAttribute('data-theme');
-            if (themeIcon) themeIcon.textContent = '🌗'; // Show Moon for light theme to switch to dark
+            if (themeIcon) themeIcon.textContent = '🌗';
         }
     };
-    
+
     applyTheme(currentTheme);
 
     if (themeToggleBtn) {
@@ -66,11 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // ==========================================
-    // 3. Scroll Animations (Intersection Observer)
-    // ==========================================
     const animatedElements = document.querySelectorAll('.fade-in, .slide-up');
-    
+
     const animationObserverOptions = {
         root: null,
         rootMargin: '0px 0px -10% 0px',
@@ -88,10 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animatedElements.forEach(el => animationObserver.observe(el));
 
-
-    // ==========================================
-    // 4. Gallery Filter
-    // ==========================================
     const filterBtns = document.querySelectorAll('.gallery__filter-btn');
     const galleryItems = document.querySelectorAll('.gallery__item');
 
@@ -108,46 +95,39 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Start fade out
                     item.style.opacity = '0';
                     item.style.transform = 'scale(0.9)';
-                    
+
                     setTimeout(() => {
                         if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                             item.style.display = 'block';
-                            // Trigger reflow to apply transition
                             void item.offsetWidth;
                             item.style.opacity = '1';
                             item.style.transform = 'scale(1)';
                         } else {
                             item.style.display = 'none';
                         }
-                    }, 300); // Wait for fade out
+                    }, 300);
                 });
             });
         });
     }
 
 
-    // ==========================================
-    // 5. Modals (Success, Info, Interactive elements)
-    // ==========================================
     const modals = document.querySelectorAll('.modal');
     const successModal = document.getElementById('success-modal');
     const infoModal = document.getElementById('info-modal');
-    
-    // Open modal function
+
     const openModal = (modal) => {
         if (!modal) return;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     };
 
-    // Close modal function
     const closeModal = (modal) => {
         if (!modal) return;
         modal.classList.remove('active');
         document.body.style.overflow = '';
     };
 
-    // Close on buttons or overlay
     document.querySelectorAll('[data-close-modal]').forEach(el => {
         el.addEventListener('click', (e) => {
             const modal = e.target.closest('.modal');
@@ -155,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             modals.forEach(modal => {
@@ -166,16 +145,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Handle Contact Form Submit -> Show Success Modal
     const contactForm = document.querySelector('.contact__form form');
     if (contactForm && successModal) {
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Stop actual submit
-            
-            // Simple validation simulation
+            e.preventDefault();
+
             const name = contactForm.querySelector('#name').value.trim();
             const email = contactForm.querySelector('#email').value.trim();
-            
+
             if (name && email) {
                 contactForm.reset();
                 openModal(successModal);
@@ -183,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle "Дізнатися більше" clicks to show Info Modal
     const featuresLinks = document.querySelectorAll('.features__card-link');
     const modalDynamicText = document.getElementById('modal-dynamic-text');
 
@@ -192,8 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', (e) => {
                 e.preventDefault(); // Stop link navigation
                 const cardTitle = e.target.closest('.features__card').querySelector('.features__card-title').textContent;
-                
-                modalDynamicText.textContent = `Тут можна розмістити детальну інтерактивну інформацію про "${cardTitle}". Ми використовуємо ES6+ для динамічної зміни цього тексту.`;
+
+                modalDynamicText.textContent = `Тут можна розмістити детальну інтерактивну інформацію про "${cardTitle}".`;
                 openModal(infoModal);
             });
         });
