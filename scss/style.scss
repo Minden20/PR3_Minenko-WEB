@@ -8,6 +8,8 @@
 @use 'base';
 
 // Components (BEM blocks)
+@use 'components/animations';
+@use 'components/modal';
 @use 'components/header';
 @use 'components/hero';
 @use 'components/features';

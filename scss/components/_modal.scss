@@ -1,0 +1,97 @@
+// ============================================
+// Modals
+// ============================================
+@use '../variables' as *;
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $transition-base, visibility $transition-base;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        
+        .modal__content {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+    }
+
+    &__content {
+        position: relative;
+        background-color: $color-bg-card;
+        padding: $spacing-xl;
+        border-radius: $radius-lg;
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+        box-shadow: $shadow-xl;
+        transform: scale(0.95) translateY(20px);
+        opacity: 0;
+        transition: transform $transition-base cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity $transition-base;
+        z-index: 1;
+        border: 1px solid $color-border;
+    }
+
+    &__close {
+        position: absolute;
+        top: $spacing-sm;
+        right: $spacing-sm;
+        background: none;
+        border: none;
+        font-size: $font-size-2xl;
+        color: $color-text-muted;
+        cursor: pointer;
+        line-height: 1;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $radius-full;
+        transition: color $transition-fast, background-color $transition-fast;
+
+        &:hover {
+            color: $color-text-primary;
+            background-color: $color-bg-secondary;
+        }
+    }
+
+    &__icon {
+        font-size: 3rem;
+        margin-bottom: $spacing-md;
+    }
+
+    &__title {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $color-text-primary;
+        margin-bottom: $spacing-sm;
+    }
+
+    &__text {
+        color: $color-text-secondary;
+        line-height: $line-height-relaxed;
+    }
+}

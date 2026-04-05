@@ -46,6 +46,9 @@
                 <a href="#contact" class="header__cta--mobile">Зв'язатися</a>
             </nav>
             <a href="#contact" class="header__cta">Зв'язатися</a>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Перемкнути тему" title="Перемкнути тему">
+                <span class="theme-toggle__icon">🌗</span>
+            </button>
             <button class="header__burger" aria-label="Меню">
                 <span></span>
                 <span></span>
@@ -58,7 +61,7 @@
     <main>
 
         <!-- HERO SECTION -->
-        <section id="hero" class="hero">
+        <section id="hero" class="hero fade-in">
             <div class="hero__bg">
                 <img src="images/bigben.jpg" alt="Біг-Бен — символ Лондона та Великої Британії">
             </div>
@@ -85,14 +88,14 @@
         </section>
 
         <!-- FEATURES SECTION -->
-        <section id="features" class="features section">
+        <section id="features" class="features section fade-in">
             <div class="features__inner">
-                <div class="features__header">
+                <div class="features__header slide-up">
                     <h2 class="features__title">Визначні пам'ятки</h2>
                     <p class="features__subtitle">Відкрийте для себе найвідоміші архітектурні шедеври та природні дива Великої Британії</p>
                 </div>
                 <div class="features__grid">
-                    <article class="features__card">
+                    <article class="features__card slide-up">
                         <div class="features__card-icon">🕐</div>
                         <h3 class="features__card-title">Біг-Бен</h3>
                         <p class="features__card-text">
@@ -103,7 +106,7 @@
                             Дізнатися більше →
                         </a>
                     </article>
-                    <article class="features__card">
+                    <article class="features__card slide-up" style="transition-delay: 0.1s">
                         <div class="features__card-icon">🌉</div>
                         <h3 class="features__card-title">Тауерський міст</h3>
                         <p class="features__card-text">
@@ -262,30 +265,50 @@
         <!-- GALLERY SECTION -->
         <section id="gallery" class="gallery section">
             <div class="gallery__inner">
-                <div class="gallery__header">
+                <div class="gallery__header slide-up">
                     <h2 class="gallery__title">Галерея</h2>
                     <p class="gallery__subtitle">Найкращі фотографії визначних пам'яток Великої Британії</p>
+                    <div class="gallery__filters">
+                        <button class="gallery__filter-btn active" data-filter="all">Всі</button>
+                        <button class="gallery__filter-btn" data-filter="london">Лондон</button>
+                        <button class="gallery__filter-btn" data-filter="england">Англія</button>
+                        <button class="gallery__filter-btn" data-filter="scotland">Шотландія</button>
+                    </div>
                 </div>
                 <div class="gallery__grid">
-                    <figure class="gallery__item gallery__item--large">
+                    <figure class="gallery__item gallery__item--large slide-up" data-category="london">
                         <img class="gallery__image" src="images/Tower-Bridge-London-2009.jpg" alt="Тауерський міст — панорамний вид">
                         <figcaption class="gallery__overlay">
                             <span class="gallery__caption">Тауерський міст</span>
                             <p class="gallery__description">Знаменитий розвідний міст через Темзу, побудований у 1894 р.</p>
                         </figcaption>
                     </figure>
-                    <figure class="gallery__item">
+                    <figure class="gallery__item slide-up" data-category="london" style="transition-delay: 0.1s;">
                         <img class="gallery__image" src="images/bigben.jpg" alt="Біг-Бен у Лондоні">
                         <figcaption class="gallery__overlay">
                             <span class="gallery__caption">Біг-Бен</span>
                             <p class="gallery__description">Башта Єлизавети — символ Лондона</p>
                         </figcaption>
                     </figure>
-                    <figure class="gallery__item">
+                    <figure class="gallery__item slide-up" data-category="london" style="transition-delay: 0.2s;">
                         <img class="gallery__image" src="images/bigben.jpg" alt="Вестмінстерський палац">
                         <figcaption class="gallery__overlay">
                             <span class="gallery__caption">Вестмінстер</span>
                             <p class="gallery__description">Палац Вестмінстер — будівля парламенту</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery__item slide-up" data-category="england" style="transition-delay: 0.3s;">
+                        <img class="gallery__image" src="images/Tower-Bridge-London-2009.jpg" alt="Стоунхендж">
+                        <figcaption class="gallery__overlay">
+                            <span class="gallery__caption">Стоунхендж</span>
+                            <p class="gallery__description">Загадкова пам'ятка стародавньої Англії</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery__item slide-up" data-category="scotland" style="transition-delay: 0.4s;">
+                        <img class="gallery__image" src="images/bigben.jpg" alt="Единбурзький замок">
+                        <figcaption class="gallery__overlay">
+                            <span class="gallery__caption">Единбурзький замок</span>
+                            <p class="gallery__description">Символ Шотландії на вершині згаслого вулкана</p>
                         </figcaption>
                     </figure>
                 </div>
@@ -415,34 +438,28 @@
         </div>
     </footer>
 
-<script>
-(function() {
-    const burger = document.querySelector('.header__burger');
-    const nav = document.querySelector('.header__nav');
-    const overlay = document.querySelector('.header__overlay');
-    const navLinks = document.querySelectorAll('.header__nav-link, .header__cta--mobile');
+<script src="js/main.js"></script>
 
-    function toggleMenu() {
-        burger.classList.toggle('header__burger--active');
-        nav.classList.toggle('header__nav--active');
-        overlay.classList.toggle('header__overlay--active');
-        document.body.style.overflow = nav.classList.contains('header__nav--active') ? 'hidden' : '';
-    }
-
-    function closeMenu() {
-        burger.classList.remove('header__burger--active');
-        nav.classList.remove('header__nav--active');
-        overlay.classList.remove('header__overlay--active');
-        document.body.style.overflow = '';
-    }
-
-    burger.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', closeMenu);
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', closeMenu);
-    });
-})();
-</script>
+    <!-- MODALS -->
+    <div class="modal" id="success-modal">
+        <div class="modal__overlay" data-close-modal></div>
+        <div class="modal__content">
+            <button class="modal__close" data-close-modal aria-label="Закрити">&times;</button>
+            <div class="modal__icon">✅</div>
+            <h3 class="modal__title">Успішно!</h3>
+            <p class="modal__text">Ваше повідомлення було успішно надіслано. Ми зв'яжемося з вами найближчим часом.</p>
+        </div>
+    </div>
+    
+    <div class="modal" id="info-modal">
+        <div class="modal__overlay" data-close-modal></div>
+        <div class="modal__content">
+            <button class="modal__close" data-close-modal aria-label="Закрити">&times;</button>
+            <div class="modal__icon">ℹ️</div>
+            <h3 class="modal__title">Більше інформації</h3>
+            <p class="modal__text" id="modal-dynamic-text">Тут розміщується цікавий факт про пам'ятку.</p>
+        </div>
+    </div>
 
 </body>
 </html>

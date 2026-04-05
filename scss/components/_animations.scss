@@ -1,0 +1,23 @@
+// ============================================
+// Animations
+// ============================================
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+
+    &.visible {
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
